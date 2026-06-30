@@ -28,9 +28,41 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 st.markdown("""
     <style>
-    .stApp {
-        background-color: #f4f7f6;
+    /* Ép toàn bộ app dùng theme sáng, không phụ thuộc dark mode của trình duyệt/hệ điều hành */
+    html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+        background-color: #f4f7f6 !important;
+        color: #1a1a1a !important;
     }
+    [data-testid="stSidebar"] {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+    }
+
+    /* Chữ tiêu đề, nhãn, văn bản thường */
+    h1, h2, h3, h4, h5, h6, p, label, span, div,
+    .stMarkdown, .stMarkdown p, .stMarkdown li,
+    [data-testid="stWidgetLabel"] p {
+        color: #1a1a1a !important;
+    }
+
+    /* Ô nhập số: nền trắng, chữ tối, viền rõ */
+    [data-testid="stNumberInput"] input,
+    [data-testid="stNumberInput"] div[data-baseweb="input"],
+    [data-baseweb="select"] > div {
+        background-color: #ffffff !important;
+        color: #1a1a1a !important;
+        border: 1px solid #c9d3da !important;
+    }
+    [data-testid="stNumberInput"] button {
+        background-color: #eef1f3 !important;
+        color: #1a1a1a !important;
+    }
+
+    /* Container có viền */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        background-color: #ffffff !important;
+    }
+
     #MainMenu, footer {visibility: hidden;}
 
     .main-header {
@@ -125,7 +157,7 @@ with col1:
     with st.container(border=True):
         st.subheader("📊 1. Hồ sơ Tài chính Doanh nghiệp")
         LNST = st.number_input(
-            "Lợi nhuận sau thuế năm gần nhất (Triệu VND)",
+            "Lợi nhuận sau thuế năm gần nhất (Triệu đồng)",
             value=2000.0, step=100.0
         )
         c1, c2 = st.columns(2)
@@ -147,10 +179,10 @@ with col1:
 with col2:
     with st.container(border=True):
         st.subheader("💰 2. Phương án Vay vốn & TSĐB")
-        STV = st.number_input("Số tiền đề nghị vay (Triệu VND)", min_value=1.0, value=5000.0, step=100.0)
+        STV = st.number_input("Số tiền đề nghị vay (Triệu đồng)", min_value=1.0, value=5000.0, step=100.0)
         TGV = st.number_input("Thời gian vay (Năm)", min_value=0.5, value=3.0, step=0.5)
         LSV = st.number_input("Lãi suất cho vay (%/năm)", min_value=0.0, value=8.5, step=0.1)
-        GTTSDB = st.number_input("Giá trị Tài sản đảm bảo (Triệu VND)", min_value=1.0, value=8000.0, step=100.0)
+        GTTSDB = st.number_input("Giá trị Tài sản đảm bảo (Triệu đồng)", min_value=1.0, value=8000.0, step=100.0)
 
 st.write("")
 
@@ -184,7 +216,7 @@ if st.button("🚀 BẮT ĐẦU PHÂN TÍCH & XÉT DUYỆT", use_container_width
             "Mức an toàn: ≥ 1.2x",
             delta_color="normal" if DSCR >= 1.2 else "inverse",
         )
-        col5.metric("Nghĩa vụ nợ hàng năm", f"{tong_no_hang_nam:,.0f} Tr VND")
+        col5.metric("Nghĩa vụ nợ hàng năm", f"{tong_no_hang_nam:,.0f} Tr đồng")
 
         # --- Biểu đồ trực quan ---
         chart_col1, chart_col2 = st.columns(2)
@@ -235,7 +267,7 @@ if st.button("🚀 BẮT ĐẦU PHÂN TÍCH & XÉT DUYỆT", use_container_width
         with st.expander("📑 Xem chi tiết cơ cấu nghĩa vụ nợ hàng năm"):
             df_debt = pd.DataFrame({
                 "Hạng mục": ["Gốc vay/năm", "Lãi vay/năm", "Tổng nghĩa vụ nợ/năm"],
-                "Giá trị (Triệu VND)": [goc_hang_nam, lai_hang_nam, tong_no_hang_nam],
+                "Giá trị (Triệu đồng)": [goc_hang_nam, lai_hang_nam, tong_no_hang_nam],
             })
             st.dataframe(df_debt, use_container_width=True, hide_index=True)
 
@@ -261,3 +293,4 @@ if st.button("🚀 BẮT ĐẦU PHÂN TÍCH & XÉT DUYỆT", use_container_width
             st.balloons()
 
 st.markdown("<p class='footer-note'>Hệ thống thẩm định tín dụng demo • Xây dựng bằng Streamlit • Không thay thế đánh giá chuyên môn của cán bộ tín dụng</p>", unsafe_allow_html=True)
+
