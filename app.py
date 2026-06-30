@@ -179,7 +179,7 @@ with col1:
 with col2:
     with st.container(border=True):
         st.subheader("💰 2. Phương án Vay vốn & TSĐB")
-        STV = st.number_input("Số tiền đề nghị vay (Triệu đồng)", min_value=1.0, value=5000.0, step=100.0)
+        STV = st.number_input("Số tiền vay (Triệu đồng)", min_value=1.0, value=5000.0, step=100.0)
         TGV = st.number_input("Thời gian vay (Năm)", min_value=0.5, value=3.0, step=0.5)
         LSV = st.number_input("Lãi suất cho vay (%/năm)", min_value=0.0, value=8.5, step=0.1)
         GTTSDB = st.number_input("Giá trị Tài sản đảm bảo (Triệu đồng)", min_value=1.0, value=8000.0, step=100.0)
@@ -292,5 +292,5 @@ if st.button("🚀 BẮT ĐẦU PHÂN TÍCH & XÉT DUYỆT", use_container_width
             st.success("#### ✅ ĐỒNG Ý CẤP TÍN DỤNG\n**Đánh giá:** Hồ sơ xuất sắc. Doanh nghiệp có hiệu quả hoạt động tốt (ROA, ROE cao), khả năng trả nợ an toàn và TSĐB đầy đủ.")
             st.balloons()
 
-st.markdown("<p class='footer-note'>Hệ thống thẩm định tín dụng demo • Xây dựng bằng Streamlit • Không thay thế đánh giá chuyên môn của cán bộ tín dụng</p>", unsafe_allow_html=True)
+
 
