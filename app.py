@@ -17,7 +17,8 @@ import time
 # 1. CẤU HÌNH TRANG
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Hệ Thống Thẩm Định Tín Dụng Doanh Nghiệp",
+    page_title="Hệ Thống Thẩm Định Tín Dụng Doanh Nghiệp
+    - Đề tài 7",
     page_icon="🏢",
     layout="wide",
     initial_sidebar_state="expanded",
