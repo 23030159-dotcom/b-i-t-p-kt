@@ -17,7 +17,7 @@ import time
 # 1. CẤU HÌNH TRANG
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Hệ Thống Thẩm Định Tín Dụng Doanh Nghiệp - Đề tài 7",
+    page_title="Hệ Thống Thẩm Định Tín Dụng Doanh Nghiệp",
     page_icon="🏢",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -123,6 +123,7 @@ st.markdown("""
 st.markdown("""
     <div class="main-header">
         <h1>🏢 HỆ THỐNG THẨM ĐỊNH TÍN DỤNG DOANH NGHIỆP</h1>
+        <h2> Đề tài 7</h2>
         <p>Đánh giá rủi ro, phân tích chỉ số tài chính và tự động đề xuất quyết định phê duyệt khoản vay.</p>
     </div>
 """, unsafe_allow_html=True)
